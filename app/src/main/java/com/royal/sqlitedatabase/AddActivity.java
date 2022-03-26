@@ -37,7 +37,7 @@ public class AddActivity extends AppCompatActivity {
                 db.insertRecord(contact);
                 edtfn.setText("");
                 edtLn.setText("");
-                Intent i = new Intent(AddActivity.this,MainActivity.class);
+               Intent i = new Intent(AddActivity.this,MainActivity.class);
                 startActivity(i);
                 finish();
             }

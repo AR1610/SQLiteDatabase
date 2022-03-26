@@ -24,7 +24,7 @@ public class UpdateActivity extends AppCompatActivity {
         db = new DatabaseHandler(this);
         btnUpdate = findViewById(R.id.btn_update);
         btnDelete = findViewById(R.id.btn_delete);
-
+//Edit Code
         Intent i = getIntent();
         String strfn = i.getStringExtra("FN_KEY");
         String strln = i.getStringExtra("LN_KEY");
@@ -43,7 +43,7 @@ public class UpdateActivity extends AppCompatActivity {
                 contact.setLastName(strln);
                 //sQLiteHelper.updateRecord(firstname, lastname, rowID);
                 db.updateRecord(contact);
-                Intent i = new Intent(UpdateActivity.this,MainActivity.class);
+                Intent i = new Intent(UpdateActivity.this, MainActivity.class);
                 startActivity(i);
             }
         });
@@ -56,7 +56,7 @@ public class UpdateActivity extends AppCompatActivity {
                 ContactModel contact = new ContactModel();
                 contact.setID(strid);
                 db.deleteRecord(contact);
-                Intent i = new Intent(UpdateActivity.this,MainActivity.class);
+                Intent i = new Intent(UpdateActivity.this, MainActivity.class);
                 startActivity(i);
 
             }

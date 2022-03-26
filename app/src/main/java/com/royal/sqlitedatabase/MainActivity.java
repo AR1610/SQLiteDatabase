@@ -23,29 +23,23 @@ public class MainActivity extends AppCompatActivity {
 
         DatabaseHandler db = new DatabaseHandler(this);
         ArrayList<ContactModel> contacts = db.getAllRecords();
+
         MyBaseAdapter myBaseAdapter = new MyBaseAdapter(this,contacts);
         listView.setAdapter(myBaseAdapter);
-
-
         btnAdd = (Button) findViewById(R.id.btn_add);
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent i = new Intent(MainActivity.this,AddActivity.class);
                 startActivity(i);
-
             }
         });
-
         if (contacts.size() > 0) {
             for (int i = 0; i < contacts.size(); i++) {
 
                 Log.e("Name====>",contacts.get(i).getFirstName());
             }
-
         }
-
     }
 }
 

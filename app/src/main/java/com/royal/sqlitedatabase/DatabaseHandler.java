@@ -21,7 +21,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
-
     @Override
     public void onCreate(SQLiteDatabase db) {
 
@@ -35,7 +34,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
+
     }
+
     /*insert data*/
     public void insertRecord(ContactModel contact) {
         database = this.getReadableDatabase();
@@ -58,19 +59,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         database.close();
     }
     /*over alternate method */
-
     public ArrayList<ContactModel> getAllRecords() {
-
         database = this.getReadableDatabase();
-
         Cursor cursor = database.query(TABLE_NAME,
                 null, null, null, null,
                 null, null);
         ArrayList<ContactModel> contacts = new ArrayList<ContactModel>();
         ContactModel contactModel;
         if (cursor.getCount() > 0) {
+
             for (int i = 0; i < cursor.getCount(); i++) {
-               cursor.moveToNext();
+                cursor.moveToNext();
                 contactModel = new ContactModel();
                 contactModel.setID(cursor.getString(0));
                 contactModel.setFirstName(cursor.getString(1));
@@ -82,6 +81,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         database.close();
         return contacts;
     }
+
 
 
     /*Select data*/
