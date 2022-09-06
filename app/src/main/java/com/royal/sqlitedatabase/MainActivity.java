@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,10 +23,11 @@ public class MainActivity extends AppCompatActivity {
         listView = (ListView)findViewById(R.id.list);
 
         DatabaseHandler db = new DatabaseHandler(this);
-        ArrayList<ContactModel> contacts = db.getAllRecords();
+        final ArrayList<ContactModel> contacts = db.getAllRecords();
 
         MyBaseAdapter myBaseAdapter = new MyBaseAdapter(this,contacts);
         listView.setAdapter(myBaseAdapter);
+
         btnAdd = (Button) findViewById(R.id.btn_add);
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import androidx.annotation.Nullable;
+
 import java.util.ArrayList;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
@@ -21,20 +23,20 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
+
     @Override
     public void onCreate(SQLiteDatabase db) {
-
         // create table  in onCreate method
         db.execSQL("create table " + TABLE_NAME +
                 " ( " + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + COLUMN_FIRST_NAME + " VARCHAR, "
                 + COLUMN_LAST_NAME + " VARCHAR);");
     }
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
-
     }
 
     /*insert data*/
@@ -48,7 +50,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
     /*over insert data*/
 
-
     /*Alternate method of insert */
     public void insertRecordAlternate(ContactModel contact) {
         database = this.getReadableDatabase();
@@ -58,31 +59,29 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + "','" + contact.getLastName() + "')");
         database.close();
     }
+
     /*over alternate method */
     public ArrayList<ContactModel> getAllRecords() {
         database = this.getReadableDatabase();
         Cursor cursor = database.query(TABLE_NAME,
                 null, null, null, null,
                 null, null);
-        ArrayList<ContactModel> contacts = new ArrayList<ContactModel>();
-        ContactModel contactModel;
+        ArrayList<ContactModel> contactModelArrayList = new ArrayList<ContactModel>();
         if (cursor.getCount() > 0) {
 
             for (int i = 0; i < cursor.getCount(); i++) {
                 cursor.moveToNext();
-                contactModel = new ContactModel();
+                ContactModel  contactModel = new ContactModel();
                 contactModel.setID(cursor.getString(0));
                 contactModel.setFirstName(cursor.getString(1));
                 contactModel.setLastName(cursor.getString(2));
-                contacts.add(contactModel);
+                contactModelArrayList.add(contactModel);
             }
         }
         cursor.close();
         database.close();
-        return contacts;
+        return contactModelArrayList;
     }
-
-
 
     /*Select data*/
     public ArrayList<ContactModel> getAllRecordsAlternate() {
@@ -113,9 +112,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     *
     *
     *1. Cursor cursor = db.query(TABLE_CONTACTS, new String[] { KEY_ID,
-KEY_NAME, KEY_IMAGE }, KEY_ID + "=?",
-new String[] { String.valueOf(id) }, null, null, null, null);
-*
+        KEY_NAME, KEY_IMAGE }, KEY_ID + "=?",
+        new String[] { String.valueOf(id) }, null, null, null, null);
+    *
     *
     *  2.  String selectQuery = "SELECT * FROM "table_name" ORDER BY "name" ";
     * 3. String countQuery = "SELECT * FROM " + TABLE_CONTACTS;

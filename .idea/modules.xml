@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SQLiteDatabase.iml" filepath="$PROJECT_DIR$/SQLiteDatabase.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SQLiteDatabase.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SQLiteDatabase.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SQLiteDatabase.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SQLiteDatabase.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SQLiteDatabase.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SQLiteDatabase.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SQLiteDatabase.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SQLiteDatabase.app.unitTest.iml" />
     </modules>
   </component>
 </project>

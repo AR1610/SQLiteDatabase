@@ -12,7 +12,6 @@ public class UpdateActivity extends AppCompatActivity {
 
     EditText edtfn, edtLn;
     Button btnUpdate;
-    private DatabaseHandler db;
     private Button btnDelete;
 
     @Override
@@ -21,10 +20,10 @@ public class UpdateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_update);
         edtfn = findViewById(R.id.etFirstName);
         edtLn = findViewById(R.id.etLastname);
-        db = new DatabaseHandler(this);
+      final DatabaseHandler  db = new DatabaseHandler(this);
         btnUpdate = findViewById(R.id.btn_update);
         btnDelete = findViewById(R.id.btn_delete);
-//Edit Code
+        //Edit Code
         Intent i = getIntent();
         String strfn = i.getStringExtra("FN_KEY");
         String strln = i.getStringExtra("LN_KEY");
@@ -37,6 +36,7 @@ public class UpdateActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String strfn = edtfn.getText().toString();
                 String strln = edtLn.getText().toString();
+
                 ContactModel contact = new ContactModel();
                 contact.setID(strid);
                 contact.setFirstName(strfn);
@@ -47,7 +47,6 @@ public class UpdateActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
 
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override

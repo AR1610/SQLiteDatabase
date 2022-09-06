@@ -12,7 +12,7 @@ public class AddActivity extends AppCompatActivity {
 
     EditText edtfn, edtLn;
     Button btnAdd;
-    private DatabaseHandler db;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +21,7 @@ public class AddActivity extends AppCompatActivity {
         edtfn = (EditText) findViewById(R.id.etFirstName);
         edtLn = (EditText) findViewById(R.id.etLastname);
         btnAdd = (Button) findViewById(R.id.btn_add);
-        db = new DatabaseHandler(this);
+        final DatabaseHandler db = new DatabaseHandler(this);
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -43,13 +43,11 @@ public class MyBaseAdapter extends BaseAdapter {
         LayoutInflater layoutInflater = (LayoutInflater)
                 context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-
         convertView = layoutInflater.inflate(R.layout.raw_list, null);
 
         final ContactModel contactModel = (ContactModel) getItem(position);
         TextView tvName = (TextView) convertView.findViewById(R.id.tv_name);
-        tvName.setText(contactModelArrayList.get(position).getID() + "  "+
-                contactModelArrayList.get(position).getFirstName() + "  " +
+        tvName.setText(contactModelArrayList.get(position).getFirstName() + "  " +
                 contactModelArrayList.get(position).getLastName());
 
         convertView.setOnClickListener(new View.OnClickListener() {
